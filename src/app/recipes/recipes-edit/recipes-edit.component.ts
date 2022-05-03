@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Ingredient } from 'src/app/shared/ingredient.model';
+import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
 
 @Component({
@@ -63,10 +65,24 @@ export class RecipesEditComponent implements OnInit {
   }
 
   onSubmit() {
+    const ingreidents: Ingredient[] = [];
+    for (let ingredientCtrl of this.controls) {
+      ingreidents.push(
+        new Ingredient(ingredientCtrl.value.name, ingredientCtrl.value.amount)
+      );
+    }
+
+    const recipe = new Recipe(
+      this.recipeForm.value.name,
+      this.recipeForm.value.description,
+      this.recipeForm.value.imagePath,
+      ingreidents
+    );
+
     if (this.editMode) {
-      this.recipeService.updateRecipe(this.id, this.recipeForm.value);
+      this.recipeService.updateRecipe(this.id, recipe);
     } else {
-      this.recipeService.addRecipe(this.recipeForm.value);
+      this.recipeService.addRecipe(recipe);
     }
     this.onCancel();
   }
