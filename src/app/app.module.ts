@@ -7,17 +7,12 @@ import { AppComponent } from './app.component';
 import { AuthInterceptorService } from './auth/auth-interceptor.service';
 import { AuthComponent } from './auth/auth.component';
 import { HeaderComponent } from './header/header.component';
-import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
-import { RecipeItemComponent } from './recipes/recipe-list/recipe-item/recipe-item.component';
-import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component';
-import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
-import { RecipesEditComponent } from './recipes/recipes-edit/recipes-edit.component';
-import { RecipesComponent } from './recipes/recipes.component';
+import { RecipesModule } from './recipes/recipes.module';
+import { AlertComponent } from './shared/alert/alert.component';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
-import { AlertComponent } from './shared/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -25,13 +20,7 @@ import { AlertComponent } from './shared/alert/alert.component';
     HeaderComponent,
     ShoppingListComponent,
     ShoppingEditComponent,
-    RecipesComponent,
-    RecipeListComponent,
-    RecipeItemComponent,
-    RecipeDetailComponent,
     DropdownDirective,
-    RecipeStartComponent,
-    RecipesEditComponent,
     AuthComponent,
     LoadingSpinnerComponent,
     AlertComponent,
@@ -42,6 +31,7 @@ import { AlertComponent } from './shared/alert/alert.component';
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
+    RecipesModule,
   ],
   providers: [
     {
