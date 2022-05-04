@@ -23,7 +23,6 @@ export class AuthComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    this.error = null;
     if (!form.valid) return;
 
     const email = form.value.email;
@@ -53,5 +52,9 @@ export class AuthComponent implements OnInit {
     );
 
     form.reset();
+  }
+
+  onHandleError() {
+    this.error = null;
   }
 }
