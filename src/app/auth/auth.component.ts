@@ -31,12 +31,13 @@ export class AuthComponent implements OnInit {
       // TODO: implement login
     } else {
       this.authService.signup(email, password).subscribe(
-        (res) => {
-          console.log(res);
+        (resData) => {
+          console.log(resData);
           this.isLoading = false;
         },
-        (error) => {
-          this.error = 'An error occured! :(';
+        (errorMessage) => {
+          console.log(errorMessage);
+          this.error = errorMessage;
           this.isLoading = false;
         }
       );
