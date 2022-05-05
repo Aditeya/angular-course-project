@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, catchError, tap, throwError } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { User } from './user.model';
 
 export interface AuthResponseData {
@@ -13,7 +14,7 @@ export interface AuthResponseData {
   registered?: boolean;
 }
 
-const API_KEY = 'AIzaSyDqlDNoPfoCjLF8MXtOO8VFe9zG-91o7hM';
+const API_KEY = environment.firebaseAPIKey;
 const SIGN_UP_URL =
   'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' + API_KEY;
 const LOGIN_URL =
