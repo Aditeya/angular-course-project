@@ -13,6 +13,13 @@ export interface AuthResponseData {
   registered?: boolean;
 }
 
+const API_KEY = 'AIzaSyDqlDNoPfoCjLF8MXtOO8VFe9zG-91o7hM';
+const SIGN_UP_URL =
+  'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' + API_KEY;
+const LOGIN_URL =
+  'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' +
+  API_KEY;
+
 @Injectable({
   providedIn: 'root',
 })
@@ -20,19 +27,11 @@ export class AuthService {
   user = new BehaviorSubject<User>(null);
   private tokenExpirationTimer: any;
 
-  private API_KEY = 'AIzaSyDqlDNoPfoCjLF8MXtOO8VFe9zG-91o7hM';
-  private SIGN_UP_URL =
-    'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' +
-    this.API_KEY;
-  private LOGIN_URL =
-    'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' +
-    this.API_KEY;
-
   constructor(private http: HttpClient, private router: Router) {}
 
   signup(email: string, password: string) {
     return this.http
-      .post<AuthResponseData>(this.SIGN_UP_URL, {
+      .post<AuthResponseData>(SIGN_UP_URL, {
         email: email,
         password: password,
         returnSecureToken: true,
@@ -52,7 +51,7 @@ export class AuthService {
 
   login(email: string, password: string) {
     return this.http
-      .post<AuthResponseData>(this.LOGIN_URL, {
+      .post<AuthResponseData>(LOGIN_URL, {
         email: email,
         password: password,
         returnSecureToken: true,
